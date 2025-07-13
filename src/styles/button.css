@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+
+@layer utilities {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-sm font-semibold shadow-sm bg-yellow-400 text-white cursor-pointer;
+
+    &:hover {
+      @apply bg-yellow-500;
+    }
+
+    &:active {
+      @apply bg-yellow-600;
+    }
+  }
+}
