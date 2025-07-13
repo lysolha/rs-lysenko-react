@@ -65,11 +65,7 @@ class Search extends React.Component<SearchProps> {
         >
           <span>Search</span>
         </Button>
-        <Button
-          type="reset"
-          onClick={this.reset}
-          disabled={this.state.input.trim().replace(/\s+/g, ' ').length === 0}
-        >
+        <Button type="reset" onClick={this.reset}>
           <span>Reset</span>
         </Button>
       </form>
