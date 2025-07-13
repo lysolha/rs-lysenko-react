@@ -7,6 +7,7 @@ import Input from './ui/Input';
 type SearchProps = {
   searchPokemonListByName: (pokemons: Pokemon[]) => void;
   setIsLoading: (isLoading: boolean) => void;
+  onError: (message: string) => void;
 };
 
 class Search extends React.Component<SearchProps> {
@@ -35,12 +36,22 @@ class Search extends React.Component<SearchProps> {
     e?.preventDefault();
     this.props.setIsLoading(true);
 
-    const pokemons = await fetchSearchByName({
-      search: this.state.input.trim().replace(/\s+/g, ' '),
-    });
-    setTimeout(() => {
-      this.props.searchPokemonListByName(pokemons);
-    }, 500);
+    try {
+      const pokemons = await fetchSearchByName({
+        search: this.state.input.trim().replace(/\s+/g, ' '),
+      });
+      setTimeout(() => {
+        this.props.searchPokemonListByName(pokemons);
+      }, 500);
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'An error occurred while searching for Pokémon.';
+      this.props.onError(errorMessage);
+    } finally {
+      this.props.setIsLoading(false);
+    }
   };
 
   reset = () => {

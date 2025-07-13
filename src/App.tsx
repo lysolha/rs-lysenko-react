@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorToast from './components/ErrorToast';
 import PokeList from './components/PokeList';
 import PokeListSkeleton from './components/PokeListSkeleton';
 import ResultHeader from './components/ResultHeader';
@@ -11,13 +12,9 @@ class App extends React.Component {
     pokemons: [],
     isLoading: false,
     isError: false,
+    errorMessage: '',
+    showErrorToast: false,
   };
-
-  componentDidMount() {}
-
-  componentDidUpdate() {
-    console.log('updated');
-  }
 
   setIsLoading = (isLoading: boolean) => {
     this.setState({ isLoading: isLoading });
@@ -25,7 +22,20 @@ class App extends React.Component {
 
   searchPokemonListByName = (pokemons: Pokemon[]) => {
     this.setState({ pokemons: pokemons });
-    this.setIsLoading(false);
+  };
+
+  showError = (message: string) => {
+    this.setState({
+      errorMessage: message,
+      showErrorToast: true,
+    });
+  };
+
+  hideError = () => {
+    this.setState({
+      showErrorToast: false,
+      errorMessage: '',
+    });
   };
 
   throwError = () => {
@@ -52,6 +62,7 @@ class App extends React.Component {
         <Search
           searchPokemonListByName={this.searchPokemonListByName}
           setIsLoading={this.setIsLoading}
+          onError={this.showError}
         />
         <ResultHeader isLoading={this.state.isLoading} />
         {this.state.isLoading ? (
@@ -59,6 +70,12 @@ class App extends React.Component {
         ) : (
           <PokeList pokemons={this.state.pokemons} />
         )}
+
+        <ErrorToast
+          message={this.state.errorMessage}
+          isVisible={this.state.showErrorToast}
+          onClose={this.hideError}
+        />
       </div>
     );
   }
