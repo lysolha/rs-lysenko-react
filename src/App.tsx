@@ -3,12 +3,14 @@ import PokeList from './components/PokeList';
 import PokeListSkeleton from './components/PokeListSkeleton';
 import ResultHeader from './components/ResultHeader';
 import Search from './components/Search';
+import Button from './components/ui/Button';
 import type { Pokemon } from './types/Pokemon';
 
 class App extends React.Component {
   state = {
     pokemons: [],
     isLoading: false,
+    isError: false,
   };
 
   componentDidMount() {}
@@ -26,9 +28,24 @@ class App extends React.Component {
     this.setIsLoading(false);
   };
 
+  throwError = () => {
+    throw new Error('Test error');
+  };
+
   render() {
     return (
       <div className="container mt-10">
+        <Button
+          className="fixed top-10 right-60 z-10"
+          type="button"
+          onClick={() => {
+            this.setState({ isError: true }, () => {
+              this.throwError();
+            });
+          }}
+        >
+          Trigger Error
+        </Button>
         <h1 className="text-4xl font-bold text-center text-white my-10">
           Poke Search
         </h1>
