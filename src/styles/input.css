@@ -1,0 +1,14 @@
+@layer utilities {
+  .input {
+    @apply flex-grow border-2 border-amber-400 rounded-sm p-2 text-white transition-all duration-300;
+    &:hover {
+      @apply bg-amber-400/50;
+    }
+    &:focus {
+      @apply bg-amber-400/50 outline-none;
+    }
+    &:focus-visible {
+      @apply outline-none;
+    }
+  }
+}
