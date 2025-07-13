@@ -1,10 +1,10 @@
 import React from 'react';
-import '../../styles/button.css';
 
 type ButtonProps = {
   children: React.ReactNode;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   type: 'submit' | 'reset' | 'button';
+  disabled?: boolean;
 };
 
 class Button extends React.Component<ButtonProps> {
@@ -14,6 +14,7 @@ class Button extends React.Component<ButtonProps> {
         className="btn"
         type={this.props.type}
         onClick={this.props.onClick}
+        disabled={this.props.disabled}
       >
         {this.props.children}
       </button>

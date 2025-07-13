@@ -1,8 +1,16 @@
 @import 'tailwindcss';
-@import './button.css';
-
 @layer utilities {
   .container {
     @apply max-w-screen-lg mx-auto px-4 flex flex-col items-center justify-center;
   }
 }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #07122c;
+}
+
+@import './button.css';
+@import './input.css';

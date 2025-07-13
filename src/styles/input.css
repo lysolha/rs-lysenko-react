@@ -1,13 +1,11 @@
-@import 'tailwindcss';
-
 @layer utilities {
   .input {
-    @apply flex-grow border-2 border-amber-400 rounded-sm p-2;
+    @apply flex-grow border-2 border-amber-400 rounded-sm p-2 text-white transition-all duration-300;
     &:hover {
-      @apply border-amber-500;
+      @apply bg-amber-400/50;
     }
     &:focus {
-      @apply border-3 border-amber-500 outline-none;
+      @apply bg-amber-400/50 outline-none;
     }
     &:focus-visible {
       @apply outline-none;
