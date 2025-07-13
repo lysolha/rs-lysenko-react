@@ -32,7 +32,6 @@ const getPokemonByURL = async (url: string) => {
     pokemon.color = colorData.color.name;
     return pokemon;
   } catch (error) {
-    console.error(error);
     throw new Error('Failed to fetch pokemon by url', { cause: error });
   }
 };
@@ -55,7 +54,6 @@ export const fetchSearchByName = async ({
     );
     return pokemonData;
   } catch (error) {
-    console.error(error);
     throw new Error('Failed to fetch search by name', { cause: error });
   }
 };
