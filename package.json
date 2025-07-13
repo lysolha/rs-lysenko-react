@@ -1,5 +1,6 @@
 {
   "name": "rs-lysenko-react",
+  "homepage": "https://lysolha.github.io/rs-lysenko-react/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +11,9 @@
     "preview": "vite preview",
     "format:fix": "prettier --write .",
     "lint:fix": "eslint --fix .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "predeploy": "npm run build",
+    "deploy": "npx gh-pages -d dist"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
