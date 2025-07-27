@@ -15,7 +15,7 @@ class ResultHeader extends React.Component<ResultHeaderProps> {
         ) : (
           <img
             className="w-full max-w-[100px] h-auto"
-            src="/relax.webp"
+            src="/rs-lysenko-react/public/relax.webp"
             alt="relax"
           />
         )}
